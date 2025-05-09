@@ -1,4 +1,4 @@
-import { Agent } from "../Types/ApiTypes";
+import { Agent, ValoriantApiResponse } from "../Types/ApiTypes";
 
 async function getInfoApi(): Promise<Agent[]> {
   try {
@@ -8,9 +8,8 @@ async function getInfoApi(): Promise<Agent[]> {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const data: Agent[] = await response.json();
-    console.log("Fetched data:", data);
-    return data;
+    const responseData: ValoriantApiResponse = await response.json();
+    return responseData.data;
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;

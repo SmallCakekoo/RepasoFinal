@@ -1,34 +1,28 @@
 import { AppDispatcher } from "./Dispatcher";
+import { State } from "./Store";
 
-export const CounterActionTypes = {
-  INCREMENT_COUNT: "INCREMENT_COUNT",
-  DECREMENT_COUNT: "DECREMENT_COUNT",
+export const LikeActionTypes = {
+  TOGGLE_LIKE: "TOGGLE_LIKE",
 };
 
-export const UserActionTypes = {
-  SAVE_USER: "SAVE_USER",
+export const StoreActionTypes = {
+  LOAD_STATE: "LOAD_STATE",
 };
 
-export const CounterActions = {
-  increment: (value: number) => {
+export const LikeActions = {
+  toggleLike: (agentId: string) => {
     AppDispatcher.dispatch({
-      type: CounterActionTypes.INCREMENT_COUNT,
-      payload: value,
-    });
-  },
-  decrement: (value: number) => {
-    AppDispatcher.dispatch({
-      type: CounterActionTypes.DECREMENT_COUNT,
-      payload: value,
+      type: LikeActionTypes.TOGGLE_LIKE,
+      payload: agentId,
     });
   },
 };
 
-export const UserActions = {
-  saveUser: (user: { name: string; age: number }) => {
+export const StoreActions = {
+  loadState: (state: State) => {
     AppDispatcher.dispatch({
-      type: UserActionTypes.SAVE_USER,
-      payload: user,
+      type: StoreActionTypes.LOAD_STATE,
+      payload: state,
     });
   },
 };
